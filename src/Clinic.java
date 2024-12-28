@@ -20,7 +20,8 @@ class Clinic {
     // Admit a patient to the clinic
     public void admitPatient(Patient patient) {
         // Add the patient to the queue and print "Patient <name> admitted."
-
+        patientQueue.add(patient);
+    	System.out.println("Patient "+patient.getName()+" admitted.");
         // TODO
     }
     
@@ -30,7 +31,18 @@ class Clinic {
         // Assign appointment day to patients(eg. Day 1, Day 2, and so on) as per their order in queue. 
         // Give appointment to maximum 3 patients per day.
         // Once appointment is given to a patient, add that patient to `admittedPatients` set. Also, print "Scheduled <name> on <appointmentDay>"
-
+        System.out.println("Scheduling appointments for day "+dayCount+"...");
+    	int noOfPatientInOneDay=0;
+    	Iterator<Patient> i= patientQueue.iterator();
+    	while(i.hasNext() && noOfPatientInOneDay<3) {
+    		Patient q=i.next();
+    			q.setAppointmentDay("Day "+dayCount);
+    			noOfPatientInOneDay++;
+    			admittedPatients.add(q);
+    			System.out.println("Sceduled "+q.getName()+" on "+q.getAppointmentDay());
+    			i.remove();
+    	}
+    	 dayCount=dayCount+1;
         // TODO
     }
 
@@ -39,7 +51,13 @@ class Clinic {
     public void providedTreatment(Patient patient, String treatment) {
         // Provide treatment to a patient only if the patient is admitted. Print "Treatment provided to <name>: <treatment>"
         // Else print "Patient not found in the admitted list."
-        
+        if(admittedPatients.contains(patient)) {
+        	patient.setTreatment(treatment);
+        	System.out.println("Treatment provided to "+patient.getName()+": "+patient.getTreatment());
+        }
+        else {
+        	System.out.println("Patient not found in the admitted list.");
+        }
         // TODO
     }
 
@@ -48,7 +66,12 @@ class Clinic {
     public void getPatientDetails(Patient patient) {
         // Print patient details only if the patient is admitted.
         // Else print "Patient not found in the admitted list."
-        
+        if(admittedPatients.contains(patient)) {
+         	System.out.println("Patient Details: "+patient);
+         }
+         else {
+         	System.out.println("Patient not found in the admitted list.");
+         }
         // TODO
     }
 
@@ -57,7 +80,12 @@ class Clinic {
     public void getAppointmentDetails(Patient patient) {
         // Print appointment details of a patient only if the patient is admitted. "Appointment Details: <name> is scheduled on <appointmentDay>"
         // Else print "Patient not found in the admitted list."
-        
+        if(admittedPatients.contains(patient)) {
+         	System.out.println("Appointment Details: "+patient.getName()+" schedule on  "+patient.getAppointmentDay());
+         }
+         else {
+         	System.out.println("Patient not found in the admitted list.");
+         }
         // TODO
     }
 
@@ -65,7 +93,8 @@ class Clinic {
     // Discharge a patient from the clinic
     public void dischargePatient(Patient patient) {
         // Remove the patient from admitted patients list. Print "Patient <name> discharged."
-
+        System.out.println("Patient "+patient.getName()+" discharged.");
+    	admittedPatients.remove(patient);
         // TODO
     }
 }

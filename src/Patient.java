@@ -18,7 +18,53 @@ class Patient {
 
     // Getter methods for name, age, gender, symptoms, treatment, appointmentDay
     // TODO
+    public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getSymptoms() {
+		return symptoms;
+	}
+
+	public void setSymptoms(String symptoms) {
+		this.symptoms = symptoms;
+	}
+
+	public String getTreatment() {
+		return treatment;
+	}
+
+	public void setTreatment(String treatment) {
+		this.treatment = treatment;
+	}
+
+	public String getAppointmentDay() {
+		return appointmentDay;
+	}
+
+	public void setAppointmentDay(String appointmentDay) {
+		this.appointmentDay = appointmentDay;
+	}
     // Setter methods for treatment, appointmentDay
     // TODO
 
